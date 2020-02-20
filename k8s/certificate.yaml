@@ -1,0 +1,20 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: khachatryan-j-me-tls
+spec:
+  secretName: khachatryan-j-me
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: khachatryan-j.me
+  dnsNames:
+    - khachatryan-j.me
+    - www.khachatryan-j.me
+  acme:
+    config:
+      - http01:
+          ingressClass: nginx
+        domains:
+          - khachatryan-j.me
+          - www.khachatryan-j.me
